@@ -23,7 +23,9 @@ ht_return_status_t ht_init_hash_table(uint16_t capacity) {
     hash_table.init_status = HT_INIT_FAILED;
     return HT_INIT_FAILED;
   }
-  memset(hash_table.table, 0, capacity * sizeof(hash_table.table));
+  for (uint8_t i = 0; i < capacity; i++) {
+    hash_table.table[i] = NULL;
+  }
   hash_table.capacity = capacity;
   hash_table.init_status = HT_INIT_SUCCEEDED;
   return HT_INIT_SUCCEEDED;
